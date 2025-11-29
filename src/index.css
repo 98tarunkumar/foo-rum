@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-background text-text-primary font-normal;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+}
+
+@layer components {
+
+  /* Input styles */
+  .input {
+    @apply w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all;
+  }
+
+  /* Button styles */
+  .btn {
+    @apply px-4 py-2 rounded-lg font-normal transition-all focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-white hover:bg-primary-dark focus:ring-primary;
+  }
+
+  .btn-secondary {
+    @apply bg-background-secondary text-text-primary border border-border hover:bg-background-tertiary focus:ring-primary;
+  }
+
+  /* Modal styles */
+  .modal-overlay {
+    @apply fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50;
+  }
+
+  .modal-content {
+    @apply bg-transparent rounded-lg shadow-none p-0 max-w-lg w-full mx-4;
+  }
+
+  .input-field {
+    @apply w-full px-3 py-2 bg-transparent border border-border rounded-md text-text-primary placeholder:text-text-secondary outline-none transition-all duration-200;
+  }
+
+  .input-field:focus {
+    @apply border-primary ring-2 ring-primary ring-opacity-20;
+  }
+
+  .input-field:disabled {
+    @apply bg-gray-50 cursor-not-allowed opacity-60;
+  }
+
+  .btn-primary {
+    @apply w-full py-3 bg-primary hover:bg-primary-dark text-white font-medium rounded-md transition-all duration-200 cursor-pointer;
+  }
+
+  .btn-primary:active {
+    @apply scale-[0.98];
+  }
+
+  .btn-primary:disabled {
+    @apply opacity-50 cursor-not-allowed;
+  }
+}
+
+@layer utilities {
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-up {
+    from {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.3s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.3s ease-out;
+  }
+
+  .shadow-uniform {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+}
