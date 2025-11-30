@@ -182,14 +182,6 @@ Currently, the application uses a simple authentication system with:
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
-
-## 👤 Author
-
-Built as part of a frontend assessment project.
-
 ## 🙏 Acknowledgments
 
 - [Vite](https://vitejs.dev/) for the amazing build tool
