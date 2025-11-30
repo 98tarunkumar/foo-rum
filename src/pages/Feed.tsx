@@ -36,6 +36,7 @@ const Feed: React.FC = () => {
   const { user, isAuthenticated } = useAuth();
   const [posts, setPosts] = useState<Post[]>(INITIAL_POSTS_STATE);
   const [showAuthModal, setShowAuthModal] = useState(false);
+  const [nextId, setNextId] = useState(4);
 
   useEffect(() => {
     const savedPosts = localStorage.getItem('posts');
@@ -55,15 +56,16 @@ const Feed: React.FC = () => {
     if (!user) return;
     
     const newPost: Post = {
-      id: `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+      id: String(nextId),
       author: user,
       content: content.trim(),
       timestamp: new Date(),
-      emoji
+      emoji: emoji || '😊'
     };
 
     const updatedPosts = [newPost, ...posts];
     setPosts(updatedPosts);
+    setNextId(nextId + 1);
     localStorage.setItem('posts', JSON.stringify(updatedPosts));
   };
 
