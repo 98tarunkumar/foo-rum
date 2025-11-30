@@ -6,9 +6,10 @@ import Header from '../components/Header';
 interface SignInProps {
   isModal?: boolean;
   onSuccess?: () => void;
+  onSwitchToSignUp?: () => void;
 }
 
-const SignIn: React.FC<SignInProps> = ({ isModal = false, onSuccess }) => {
+const SignIn: React.FC<SignInProps> = ({ isModal = false, onSuccess, onSwitchToSignUp }) => {
   const navigate = useNavigate();
   const { login } = useAuth();
   const [email, setEmail] = useState('');
@@ -47,8 +48,8 @@ const SignIn: React.FC<SignInProps> = ({ isModal = false, onSuccess }) => {
               <line x1="15" y1="12" x2="3" y2="12" />
             </svg>
           </div>
-          <h2 className="text-3xl font-semibold text-text-primary mb-2">Sign in to continue</h2>
-          <p className="text-base text-text-secondary">Sign in to access all the features on this app</p>
+          <h2 className="text-2xl font-semibold text-text-primary mb-2">Sign in to continue</h2>
+          <p className="text-md text-text-secondary">Sign in to access all the features on this app</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4 flex gap-2 flex-col mb-4">
@@ -98,9 +99,13 @@ const SignIn: React.FC<SignInProps> = ({ isModal = false, onSuccess }) => {
         <span>Do not have and account?</span>
         <span className="ml-2">
           {isModal ? (
-            <Link to="/signup" className="text-primary hover:underline" onClick={onSuccess}>
+            <button 
+              type="button"
+              onClick={onSwitchToSignUp}
+              className="text-primary hover:underline cursor-pointer bg-transparent border-none p-0"
+            >
               Sign Up
-            </Link>
+            </button>
           ) : (
             <Link to="/signup" className="text-primary hover:underline">
               Sign Up

@@ -5,6 +5,7 @@ import type { Post } from '../types';
 import Header from '../components/Header';
 import PostEditor from '../components/PostEditor';
 import SignIn from './SignIn';
+import SignUp from './SignUp';
 import PostCard from '../components/PostCard';
 
 const INITIAL_POSTS_STATE: Post[] = [
@@ -36,6 +37,7 @@ const Feed: React.FC = () => {
   const { user, isAuthenticated } = useAuth();
   const [posts, setPosts] = useState<Post[]>(INITIAL_POSTS_STATE);
   const [showAuthModal, setShowAuthModal] = useState(false);
+  const [authView, setAuthView] = useState<'signin' | 'signup'>('signin');
   const [nextId, setNextId] = useState(4);
 
   useEffect(() => {
@@ -77,6 +79,15 @@ const Feed: React.FC = () => {
 
   const onAuthComplete = () => {
     setShowAuthModal(false);
+    setAuthView('signin');
+  };
+
+  const switchToSignUp = () => {
+    setAuthView('signup');
+  };
+
+  const switchToSignIn = () => {
+    setAuthView('signin');
   };
 
   return (
@@ -99,7 +110,19 @@ const Feed: React.FC = () => {
       </main>
 
       <Modal isOpen={showAuthModal} onClose={() => setShowAuthModal(false)}>
-        <SignIn isModal={true} onSuccess={onAuthComplete} />
+        {authView === 'signin' ? (
+          <SignIn 
+            isModal={true} 
+            onSuccess={onAuthComplete}
+            onSwitchToSignUp={switchToSignUp}
+          />
+        ) : (
+          <SignUp 
+            isModal={true} 
+            onSuccess={onAuthComplete}
+            onSwitchToSignIn={switchToSignIn}
+          />
+        )}
       </Modal>
     </div>
   )

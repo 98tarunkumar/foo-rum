@@ -3,7 +3,13 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import Header from '../components/Header';
 
-const SignUp: React.FC = () => {
+interface SignUpProps {
+  isModal?: boolean;
+  onSuccess?: () => void;
+  onSwitchToSignIn?: () => void;
+}
+
+const SignUp: React.FC<SignUpProps> = ({ isModal = false, onSuccess, onSwitchToSignIn }) => {
   const navigate = useNavigate();
   const { signup } = useAuth();
   const [email, setEmail] = useState('');
@@ -32,19 +38,18 @@ const SignUp: React.FC = () => {
 
     const registered = signup(email, password);
     if (registered) {
-      navigate('/');
+      if (onSuccess) {
+        onSuccess();
+      } else {
+        navigate('/');
+      }
     } else {
       setError('This email is already registered');
     }
   };
 
-  return (
-    <div className="min-h-screen bg-background-secondary w-full">
-      <Header showBackOption={true} />
-
-      <div className="flex items-center justify-center px-4 py-8">
-        <div className="bg-white rounded-xl max-w-lg w-full border border-gray-100">
-          <div className="w-full bg-gray-200 p-2 rounded-xl rounded-full">
+  const content = (
+    <div className="w-full bg-gray-100 p-2 rounded-xl rounded-full">
             <div className="bg-white rounded-xl w-full px-12 py-8">
               <div className="flex flex-col items-center mb-16">
                 <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mb-4">
@@ -54,10 +59,10 @@ const SignUp: React.FC = () => {
                     <line x1="15" y1="12" x2="3" y2="12" />
                   </svg>
                 </div>
-                <h2 className="text-3xl font-semibold text-text-primary mb-2">
+                <h2 className="text-2xl font-semibold text-text-primary mb-2">
                   Create an account to continue
                 </h2>
-                <p className="text-base text-text-secondary">
+                <p className="text-md text-text-secondary">
                   Create an account to access all the features on this app
                 </p>
               </div>
@@ -118,15 +123,37 @@ const SignUp: React.FC = () => {
               </form>
             </div>
 
-            <div className="text-center text-sm text-text-secondary flex items-center justify-center p-2">
+          <div className="text-center text-sm text-text-secondary flex items-center justify-center p-2">
               <span>Already have an account?</span>
               <span className="ml-2">
-                <Link to="/signin" className="text-primary hover:underline">
-                  Sign In
-                </Link>
+                {isModal ? (
+                  <button 
+                    type="button"
+                    onClick={onSwitchToSignIn}
+                    className="text-primary hover:underline cursor-pointer bg-transparent border-none p-0"
+                  >
+                    Sign In
+                  </button>
+                ) : (
+                  <Link to="/signin" className="text-primary hover:underline">
+                    Sign In
+                  </Link>
+                )}
               </span>
             </div>
-          </div>
+        </div>
+  );
+
+  if (isModal) {
+    return content;
+  }
+
+  return (
+    <div className="min-h-screen bg-background-secondary w-full">
+      <Header showBackOption={true} />
+      <div className="flex items-center justify-center px-4 py-8">
+        <div className="bg-white rounded-xl max-w-lg w-full border border-gray-100">
+          {content}
         </div>
       </div>
     </div>
