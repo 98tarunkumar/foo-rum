@@ -51,7 +51,7 @@
   }
 
   .btn-primary {
-    @apply w-full py-3 bg-primary hover:bg-primary-dark text-white font-medium rounded-md transition-all duration-200 cursor-pointer;
+    @apply w-full py-3 bg-primary hover:bg-primary-dark text-white font-semibold rounded-md transition-all duration-200 cursor-pointer;
   }
 
   .btn-primary:active {

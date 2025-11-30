@@ -31,7 +31,7 @@ const Header: React.FC<HeaderProps> = ({ showBackOption = false }) => {
               <circle cx="12" cy="12" r="10" />
             </svg>
           </div>
-          <span className="text-lg font-bold text-text-primary">foo-rum</span>
+          <span className="text-xl font-semibold text-text-primary">foo-rum</span>
         </div>
 
 
@@ -39,14 +39,14 @@ const Header: React.FC<HeaderProps> = ({ showBackOption = false }) => {
         {showBackOption ? (
           <button
             onClick={() => navigate('/')}
-            className="text-text-secondary hover:text-text-primary transition-colors duration-200 font-normal text-sm"
+            className="text-text-secondary hover:text-text-primary transition-colors duration-200 font-medium text-sm"
           >
             Back to home
           </button>
         ) : (
           <button
             onClick={handleAuthAction}
-            className="flex items-center gap-2 text-text-secondary hover:text-text-primary transition-colors duration-200 font-normal text-sm"
+            className="flex items-center gap-2 text-text-secondary hover:text-text-primary transition-colors duration-200 font-medium text-sm"
           >
             <span>{isAuthenticated ? 'Logout' : 'Login'}</span>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

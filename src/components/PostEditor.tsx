@@ -46,15 +46,15 @@ const PostEditor: React.FC<PostEditorProps> = ({ onPostCreated, onUnAuthorizedAc
 
   return (
 
-    <div className="w-full max-w-3xl bg-white rounded-xl shadow-uniform" onClick={checkAuth}>
+    <div className="w-full max-w-3xl bg-white rounded-xl shadow-uniform border border-gray-1000" onClick={checkAuth}>
 
       <div>
-        <div className="flex items-center bg-white justify-between px-4 py-3 border-gray-200 rounded-t-2xl">
-          <div className="flex items-center bg-gray-100 justify-between px-1 py-1  border-gray-1000 rounded-lg">
+        <div className="flex items-center bg-white justify-between px-4 py-3 rounded-t-2xl">
+          <div className="flex items-center bg-gray-100 justify-between px-1 py-1 rounded-lg">
             <div className="flex items-center gap-1">
               {/* Paragraph Dropdown */}
               <select 
-                className="px-3 py-1.5 text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer"
+                className="px-3 py-1.5 text-sm font-medium text-gray-700 bg-white  rounded-lg cursor-pointer"
                 onChange={(e) => {
                   if (!isAuthenticated) {
                     e.preventDefault();
@@ -76,7 +76,7 @@ const PostEditor: React.FC<PostEditorProps> = ({ onPostCreated, onUnAuthorizedAc
               {/* Bold */}
               <button 
                 className="p-2 text-gray-600 hover:bg-gray-100 rounded-lg transition-colors"
-              
+                onClick={handleNotReady}
               >
                 <Bold className="w-5 h-5" />
               </button>
@@ -84,7 +84,7 @@ const PostEditor: React.FC<PostEditorProps> = ({ onPostCreated, onUnAuthorizedAc
               {/* Italic */}
               <button 
                 className="p-2 text-gray-600 hover:bg-gray-100 rounded-lg transition-colors"
-                
+                onClick={handleNotReady}
               >
                 <Italic className="w-5 h-5" />
               </button>
@@ -92,7 +92,7 @@ const PostEditor: React.FC<PostEditorProps> = ({ onPostCreated, onUnAuthorizedAc
               {/* Underline */}
               <button 
                 className="p-2 text-gray-600 hover:bg-gray-100 rounded-lg transition-colors"
-              
+                onClick={handleNotReady}
               >
                 <Underline className="w-5 h-5" />
               </button>
@@ -103,7 +103,7 @@ const PostEditor: React.FC<PostEditorProps> = ({ onPostCreated, onUnAuthorizedAc
 
               <button 
                 className="p-2 text-gray-600 hover:bg-gray-100 rounded-lg transition-colors"
-                
+                onClick={handleNotReady}
               >
                 <List className="w-5 h-5" />
               </button>
@@ -111,7 +111,7 @@ const PostEditor: React.FC<PostEditorProps> = ({ onPostCreated, onUnAuthorizedAc
 
               <button 
                 className="p-2 text-gray-600 hover:bg-gray-100 rounded-lg transition-colors"
-                
+                onClick={handleNotReady}
               >
                 <ListOrdered className="w-5 h-5" />
               </button>
@@ -122,7 +122,7 @@ const PostEditor: React.FC<PostEditorProps> = ({ onPostCreated, onUnAuthorizedAc
 
               <button 
                 className="p-2 text-gray-600 hover:bg-gray-100 rounded-lg transition-colors"
-                
+                onClick={handleNotReady}
               >
                 <Quote className="w-5 h-5" />
               </button>
@@ -130,7 +130,7 @@ const PostEditor: React.FC<PostEditorProps> = ({ onPostCreated, onUnAuthorizedAc
 
               <button 
                 className="p-2 text-gray-600 hover:bg-gray-100 rounded-lg transition-colors"
-                
+                onClick={handleNotReady}
               >
                 <Code className="w-5 h-5" />
               </button>
@@ -156,7 +156,7 @@ const PostEditor: React.FC<PostEditorProps> = ({ onPostCreated, onUnAuthorizedAc
               onChange={(e) => setContent(e.target.value)}
               onClick={checkAuth}
               placeholder="What's on your mind?"
-              className="flex-1 text-gray-400 text-lg placeholder-gray-400 border-none outline-none resize-none font-normal"
+              className="flex-1 text-gray-900 text-base placeholder-gray-400 border-none outline-none resize-none font-normal"
               rows={3}
             />
           </div>

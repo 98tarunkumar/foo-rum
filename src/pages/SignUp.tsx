@@ -43,7 +43,7 @@ const SignUp: React.FC = () => {
       <Header showBackOption={true} />
 
       <div className="flex items-center justify-center px-4 py-8">
-        <div className="bg-white rounded-xl max-w-lg w-full shadow-uniform border border-border">
+        <div className="bg-white rounded-xl max-w-lg w-full border border-gray-100">
           <div className="w-full bg-gray-200 p-2 rounded-xl rounded-full">
             <div className="bg-white rounded-xl w-full px-12 py-8">
               <div className="flex flex-col items-center mb-16">
@@ -54,17 +54,17 @@ const SignUp: React.FC = () => {
                     <line x1="15" y1="12" x2="3" y2="12" />
                   </svg>
                 </div>
-                <h2 className="text-2xl font-bold text-text-primary mb-2">
+                <h2 className="text-3xl font-semibold text-text-primary mb-2">
                   Create an account to continue
                 </h2>
-                <p className="text-sm text-text-secondary">
+                <p className="text-base text-text-secondary">
                   Create an account to access all the features on this app
                 </p>
               </div>
 
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-4 flex gap-2 flex-col mb-4">
                 <div>
-                  <label className="block text-sm font-bold text-text-primary mb-2">
+                  <label className="block text-sm font-medium text-text-primary mb-2">
                     Email or username
                   </label>
                   <input
@@ -77,7 +77,7 @@ const SignUp: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-bold text-text-primary mb-2">Password</label>
+                  <label className="block text-sm font-medium text-text-primary mb-2">Password</label>
                   <input
                     type="password"
                     value={password}
@@ -88,7 +88,7 @@ const SignUp: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-bold text-text-primary mb-2">
+                  <label className="block text-sm font-medium text-text-primary mb-2">
                     Repeat password
                   </label>
                   <input
@@ -108,7 +108,7 @@ const SignUp: React.FC = () => {
 
                 <button 
                   type="submit" 
-                  className="btn-primary font-normal mt-4"
+                  className="btn-primary font-medium mt-4"
                   style={{ backgroundColor: '#5157ea' }}
                   onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#4349d4'}
                   onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#5157ea'}

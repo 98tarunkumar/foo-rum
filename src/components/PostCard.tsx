@@ -1,6 +1,6 @@
 import React from 'react';
 import type { Post } from '../types';
-import { Heart, MessageCircle, Send, CircleUser } from 'lucide-react';
+import { Heart, MessageCircle, Send } from 'lucide-react';
 
 interface PostCardProps {
   post: Post;
@@ -27,15 +27,25 @@ const PostCard: React.FC<PostCardProps> = ({ post, onInteraction: _onInteraction
       <div className="w-full max-w-2xl">
         <div className="bg-gray-100 rounded-xl shadow-sm border border-gray-100 overflow-hidden p-2">
           <div className="px-4 pt-4 pb-4 bg-white">
-            <div className="flex items-start gap-3">
-              <CircleUser className="w-12 h-12 rounded-full object-cover flex-shrink-0" />
+            <div className="flex items-center gap-3">
+              <button 
+                onClick={() => alert('Profile view not implemented')}
+                className="flex-shrink-0 focus:outline-none focus:ring-2 focus:ring-primary rounded-full transition-all hover:opacity-80"
+                title="View profile"
+              >
+                <img 
+                  src={`https://i.pravatar.cc/150?img=${post.id}`}
+                  alt={`${post.author.username}'s avatar`}
+                  className="w-12 h-12 rounded-xl object-cover ring-2 ring-gray-200"
+                />
+              </button>
               
               <div className="flex-1 min-w-0">
                 <div className="flex flex-col gap-0">
-                  <h3 className="font-semibold text-gray-900 text-base">
+                  <h3 className="font-semibold text-gray-900 text-lg">
                     {post.author.username}
                   </h3>
-                  <span className="text-sm text-gray-400">
+                  <span className="text-sm text-gray-500 font-normal">
                     {formatTime(post.timestamp)}
                   </span>
                 </div>
@@ -49,7 +59,7 @@ const PostCard: React.FC<PostCardProps> = ({ post, onInteraction: _onInteraction
                 </span>
               )}
               
-              <p className="text-gray-900 text-base leading-relaxed flex-1">
+              <p className="text-gray-900 text-base leading-relaxed flex-1 font-normal">
                 {post.content}
               </p>
             </div>
@@ -57,19 +67,22 @@ const PostCard: React.FC<PostCardProps> = ({ post, onInteraction: _onInteraction
 
           <div className="flex items-center gap-1">
             <button
-              className="p-2.5 hover:bg-gray-50 rounded-lg transition-colors text-gray-600"
+              className="p-2.5 rounded-lg transition-colors text-gray-600"
+              onClick={() => alert('Function not implemented')}
               title="Like"
             >
               <Heart className="w-5 h-5 stroke-[2]" />
             </button>
             <button
-              className="p-2.5 hover:bg-gray-50 rounded-lg transition-colors text-gray-600"
+              className="p-2.5 rounded-lg transition-colors text-gray-600"
+              onClick={() => alert('Function not implemented')}
               title="Comment"
             >
               <MessageCircle className="w-5 h-5 stroke-[2]" />
             </button>
             <button
-              className="p-2.5 hover:bg-gray-50 rounded-lg transition-colors text-gray-600"
+              className="p-2.5 rounded-lg transition-colors text-gray-600"
+              onClick={() => alert('Function not implemented')}
               title="Share"
             >
               <Send className="w-5 h-5 stroke-[2]" />
