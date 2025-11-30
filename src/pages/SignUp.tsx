@@ -62,7 +62,7 @@ const SignUp: React.FC<SignUpProps> = ({ isModal = false, onSuccess, onSwitchToS
                 <h2 className="text-2xl font-semibold text-text-primary mb-2">
                   Create an account to continue
                 </h2>
-                <p className="text-md text-text-secondary">
+                <p className="text-sm text-text-secondary">
                   Create an account to access all the features on this app
                 </p>
               </div>

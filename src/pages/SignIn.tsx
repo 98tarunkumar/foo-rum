@@ -49,7 +49,7 @@ const SignIn: React.FC<SignInProps> = ({ isModal = false, onSuccess, onSwitchToS
             </svg>
           </div>
           <h2 className="text-2xl font-semibold text-text-primary mb-2">Sign in to continue</h2>
-          <p className="text-md text-text-secondary">Sign in to access all the features on this app</p>
+          <p className="text-sm text-text-secondary">Sign in to access all the features on this app</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4 flex gap-2 flex-col mb-4">
